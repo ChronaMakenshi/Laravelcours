@@ -78,7 +78,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 # Laravelcours
 
-composer install
+composer install et
 npm install
 
 # Pour créer un projet Laravel.
