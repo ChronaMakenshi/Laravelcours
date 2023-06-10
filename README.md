@@ -9,11 +9,14 @@
 
 ## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and
+creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in
+many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache)
+  storage.
 - Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
 - Database agnostic [schema migrations](https://laravel.com/docs/migrations).
 - [Robust background job processing](https://laravel.com/docs/queues).
@@ -23,15 +26,20 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all
+modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a
+modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video
+tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging
+into our comprehensive video library.
 
 ## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in
+becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
 ### Premium Partners
 
@@ -51,17 +59,113 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in
+the [Laravel documentation](https://laravel.com/docs/contributions).
 
 ## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+In order to ensure that the Laravel community is welcoming to all, please review and abide by
+the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell
+via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
 # Laravelcours
+
+composer install
+npm install
+
+# Pour créer un projet Laravel.
+
+composer create-project laravel/laravel=10 MonApp
+
+# Pour le serveur local.
+
+php artisan serve et npm run dev
+
+# Créer une base de données.
+
+php artisan make:migration CreatePostTable
+
+Pour ajuster des nouvelles colonnes..
+
+Schema::create('posts', function (Blueprint $table) {
+$table->id();
+$table->string('title');
+$table->string('slug')->unique();
+$table->longText('content');
+$table->timestamps();
+});
+
+php artisan migrate
+
+# Un Model.
+
+php artisan make:model Post -m.
+
+# Pour créer un utilisateur.
+
+dans la fonction index()
+
+User::create([
+'name' => 'John',
+'email' => 'john@doe.fr',
+'password' => Hash::make('0000')
+]);
+
+# Pour créer des données.
+
+$post = Post::create([
+'title' => 'Mon Titre',
+'slug' => 'mon-titre',.
+
+    'online'=> true
+
+])
+
+# Pour attacher ou détaché des relations.
+
+$post->tags()->attach($tagId);
+$post->tags()->detach($tagId);
+$post->tags()->detach(); // Retire la liaison pour tous les tags de l'article
+$user->roles()->sync([1, 2, 3]); // Synchronise la relation avec les ids, en supprimant et ajoutant les relation quand
+nécessaire
+
+# Pour créer un Controller.
+
+php artisan make:controller BlogController.
+
+# Pour créer des requêtes.
+
+php artisan make:request CreatePostRequest.
+
+# Laravel debugbar
+
+composer require barryvdh/laravel-debugbar --dev
+
+# Laravel ide helper
+
+_Du même auteur, Laravel IDE Helper permettra de générer des fichiers pour avoir une meilleure complétion au niveau de
+votre éditeur. L'installation se fait aussi au travers de composer._
+
+composer require --dev barryvdh/laravel-ide-helper
+
+_Vous pourrez ensuite utiliser de nouvelles commandes artisan pour générer les fichiers d'aide._
+
+php artisan clear-compiled
+php artisan ide-helper:generate
+php artisan ide-helper:models -M
+php artisan ide-helper:meta.
+
+_Le disque "public" permet de stocker les fichiers dans un dossier qui sera publiquement accessible par les
+utilisateurs.
+Par défaut, cela correspondra au chemin storage/app/public. Il faudra faire un lien symbolique pour rendre ce dossier
+accessible._
+
+php artisan storage:link.
