@@ -159,8 +159,11 @@ composer require --dev barryvdh/laravel-ide-helper
 _Vous pourrez ensuite utiliser de nouvelles commandes artisan pour générer les fichiers d'aide._
 
 php artisan clear-compiled
+
 php artisan ide-helper:generate
+
 php artisan ide-helper:models -M
+
 php artisan ide-helper:meta.
 
 _Le disque "public" permet de stocker les fichiers dans un dossier qui sera publiquement accessible par les
